@@ -1,1 +1,1 @@
-<h1 algin='center'>React Deployer</h1>
+<h1 align='center'>React Deployer</h1>
