@@ -1,12 +1,8 @@
-import { S3 } from 'aws-sdk'
+import { s3 } from 'common'
 import fs from 'fs'
 import 'dotenv/config'
 
-const s3 = new S3({
-    accessKeyId: process.env.ACCESS_KEY,
-    secretAccessKey: process.env.SECRET_KEY,
-    endpoint: process.env.ENDPOINT
-})
+console.log(s3)
 
 export const uploadFile = async(fileName:string,localPath:string) => {
     const fileContent = fs.readFileSync(localPath);

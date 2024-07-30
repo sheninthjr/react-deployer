@@ -1,14 +1,8 @@
 import express from "express";
-import { S3 } from 'aws-sdk'
+import { s3 } from 'common'
 import 'dotenv/config'
 
 const app = express();
-
-const s3 = new S3({
-    accessKeyId: process.env.ACCESS_KEY,
-    secretAccessKey: process.env.SECRET_KEY,
-    endpoint: process.env.ENDPOINT
-})
 
 app.get("/*", async (req, res) => {
     const host = req.hostname;

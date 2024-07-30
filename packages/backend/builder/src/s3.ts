@@ -1,13 +1,7 @@
 import fs from 'fs';
 import path from 'path';
-import { S3 } from 'aws-sdk'
-import 'dotenv/config'
+import { s3 } from 'common';
 
-export const s3 = new S3({
-    accessKeyId: process.env.ACCESS_KEY,
-    secretAccessKey: process.env.SECRET_KEY,
-    endpoint: process.env.ENDPOINT
-})
 
 export const downloadFiles = async (prefix:string) => {
     const allFiles = await s3.listObjectsV2({
