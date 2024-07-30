@@ -1,4 +1,5 @@
 import { commandOptions, createClient } from "redis";
+import 'dotenv/config'
 import { downloadFiles, uploadDistToS3 } from "./s3";
 import { buildFile } from "./buildFiles";
 
@@ -13,8 +14,8 @@ async function main() {
         const id = res?.element;
         await downloadFiles(`output/${id}`);
         await buildFile(id as string);
-        await uploadDistToS3(`dist/${id}`);
-        publisher.hSet("status",id as string,"builded");        
+        await uploadDistToS3(id as string);
+        publisher.hSet("status",id as string,"deployed");        
     }
 }
 
