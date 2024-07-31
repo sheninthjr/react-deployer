@@ -10,6 +10,7 @@ import {
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { Dashboard } from "./Dashboard";
 
 export function SideBar() {
   const links = [
@@ -46,7 +47,7 @@ export function SideBar() {
   return (
     <div
       className={cn(
-        "rounded-md flex flex-col text-white md:flex-row bg-gray-100 dark:bg-neutral-800 w-full flex-1 overflow-hidden",
+        "rounded-md flex flex-col text-white md:flex-row bg-black dark:bg-neutral-800 w-full flex-1 overflow-hidden",
         "h-screen"
       )}
     >
@@ -110,27 +111,3 @@ export const LogoIcon = () => {
   );
 };
 
-const Dashboard = () => {
-  return (
-    <div className="flex flex-1">
-      <div className="p-2 md:p-10 border border-neutral-700 dark:border-neutral-700 bg-slate-950 dark:bg-neutral-900 flex flex-col gap-2 flex-1 w-full h-full">
-        <div className="flex gap-2">
-          {[...new Array(4)].map((i) => (
-            <div
-              key={"first-array" + i}
-              className="h-20 w-full rounded-lg  bg-gray-100 dark:bg-neutral-800"
-            ></div>
-          ))}
-        </div>
-        <div className="flex gap-2 flex-1">
-          {[...new Array(2)].map((i) => (
-            <div
-              key={"second-array" + i}
-              className="h-full w-full rounded-lg  bg-gray-100 dark:bg-neutral-800"
-            ></div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-};
