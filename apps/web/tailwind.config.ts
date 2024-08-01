@@ -18,8 +18,12 @@ const config = {
       },
     },
     extend: {
+      width: {
+        '120': '28rem',
+      },
       colors: {
         border: "hsl(var(--border))",
+        'dark-black': "#18181B",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
