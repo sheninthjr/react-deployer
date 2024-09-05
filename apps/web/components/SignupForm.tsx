@@ -1,17 +1,44 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import { Label } from './ui/label';
 import { Input } from './ui/input';
 import { cn } from '@/lib/utils';
+import axios from 'axios';
+import { setUserDetails } from '@/hooks/userDetails';
+import { useRouter } from 'next/navigation';
 
 interface FormType {
   type: 'Signup' | 'Signin';
 }
 
 export function SignupForm({ type }: FormType) {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    firstname: '',
+    lastname: '',
+    email: '',
+    password: '',
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('Form submitted');
+    try {
+      const endpoint = type === 'Signup' ? '/api/signup' : '/api/signin';
+      const response = await axios.post(endpoint, formData);
+      if (response.status === 200) {
+        setUserDetails(response.data.userName, response.data.userId);
+        router.push('/');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    }
   };
   return (
     <div
@@ -25,21 +52,45 @@ export function SignupForm({ type }: FormType) {
           <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
             <LabelInputContainer>
               <Label htmlFor="firstname">First name</Label>
-              <Input id="firstname" placeholder="Sheninth" type="text" />
+              <Input
+                id="firstname"
+                value={formData.firstname}
+                onChange={handleChange}
+                placeholder="Sheninth"
+                type="text"
+              />
             </LabelInputContainer>
             <LabelInputContainer>
               <Label htmlFor="lastname">Last name</Label>
-              <Input id="lastname" placeholder="Jr" type="text" />
+              <Input
+                id="lastname"
+                value={formData.lastname}
+                onChange={handleChange}
+                placeholder="Jr"
+                type="text"
+              />
             </LabelInputContainer>
           </div>
         )}
         <LabelInputContainer className="mb-4">
           <Label htmlFor="email">Email Address</Label>
-          <Input id="email" placeholder="jrdeployer@gmail.com" type="email" />
+          <Input
+            id="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="jrdeployer@gmail.com"
+            type="email"
+          />
         </LabelInputContainer>
         <LabelInputContainer className="mb-4">
           <Label htmlFor="password">Password</Label>
-          <Input id="password" placeholder="••••••••" type="password" />
+          <Input
+            id="password"
+            value={formData.password}
+            onChange={handleChange}
+            placeholder="••••••••"
+            type="password"
+          />
         </LabelInputContainer>
         <button
           className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
