@@ -1,27 +1,29 @@
-"use client";
-import React from "react";
-import { Label } from "./ui/label";
-import { Input } from "./ui/input";
-import { cn } from "@/lib/utils";
+'use client';
+import React from 'react';
+import { Label } from './ui/label';
+import { Input } from './ui/input';
+import { cn } from '@/lib/utils';
 
 interface FormType {
-  type: "Signup" | "Signin"
+  type: 'Signup' | 'Signin';
 }
 
-export function SignupForm({type} : FormType) {
+export function SignupForm({ type }: FormType) {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Form submitted");
+    console.log('Form submitted');
   };
-  return  (
-    <div className={`mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black ${type === 'Signin' ? "w-120" : "max-w-md w-full "}`}>
+  return (
+    <div
+      className={`mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black ${type === 'Signin' ? 'w-120' : 'max-w-md w-full '}`}
+    >
       <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
         Welcome to Jr Deployer
       </h2>
       <form className="my-8" onSubmit={handleSubmit}>
-        {type === "Signup" && 
+        {type === 'Signup' && (
           <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
-              <LabelInputContainer>
+            <LabelInputContainer>
               <Label htmlFor="firstname">First name</Label>
               <Input id="firstname" placeholder="Sheninth" type="text" />
             </LabelInputContainer>
@@ -30,7 +32,7 @@ export function SignupForm({type} : FormType) {
               <Input id="lastname" placeholder="Jr" type="text" />
             </LabelInputContainer>
           </div>
-        }
+        )}
         <LabelInputContainer className="mb-4">
           <Label htmlFor="email">Email Address</Label>
           <Input id="email" placeholder="jrdeployer@gmail.com" type="email" />
@@ -68,7 +70,7 @@ const LabelInputContainer = ({
   className?: string;
 }) => {
   return (
-    <div className={cn("flex flex-col space-y-2 w-full", className)}>
+    <div className={cn('flex flex-col space-y-2 w-full', className)}>
       {children}
     </div>
   );

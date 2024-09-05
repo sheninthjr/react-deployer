@@ -1,43 +1,43 @@
-"use client";
-import React, { useState } from "react";
-import { Sidebar, SidebarBody, SidebarLink } from "./ui/sidebar";
+'use client';
+import React, { useState } from 'react';
+import { Sidebar, SidebarBody, SidebarLink } from './ui/sidebar';
 import {
   IconArrowLeft,
   IconBrandTabler,
   IconSettings,
   IconUserBolt,
-} from "@tabler/icons-react";
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
-import { Dashboard } from "./Dashboard";
+} from '@tabler/icons-react';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { cn } from '@/lib/utils';
+import { Dashboard } from './Dashboard';
 
 export function SideBar() {
   const links = [
     {
-      label: "Dashboard",
-      href: "#",
+      label: 'Dashboard',
+      href: '#',
       icon: (
         <IconBrandTabler className="text-white dark:text-white h-5 w-5 flex-shrink-0" />
       ),
     },
     {
-      label: "Profile",
-      href: "#",
+      label: 'Profile',
+      href: '#',
       icon: (
         <IconUserBolt className="text-white dark:text-white h-5 w-5 flex-shrink-0" />
       ),
     },
     {
-      label: "Settings",
-      href: "#",
+      label: 'Settings',
+      href: '#',
       icon: (
         <IconSettings className="text-white dark:text-white h-5 w-5 flex-shrink-0" />
       ),
     },
     {
-      label: "Logout",
-      href: "#",
+      label: 'Logout',
+      href: '#',
       icon: (
         <IconArrowLeft className="text-white dark:text-white h-5 w-5 flex-shrink-0" />
       ),
@@ -47,8 +47,8 @@ export function SideBar() {
   return (
     <div
       className={cn(
-        "rounded-md flex flex-col text-white md:flex-row bg-black dark:bg-neutral-800 w-full flex-1 overflow-hidden",
-        "h-screen"
+        'rounded-md flex flex-col text-white md:flex-row bg-black dark:bg-neutral-800 w-full flex-1 overflow-hidden',
+        'h-screen',
       )}
     >
       <Sidebar open={open} setOpen={setOpen}>
@@ -64,8 +64,8 @@ export function SideBar() {
           <div>
             <SidebarLink
               link={{
-                label: "Sheninth Jr",
-                href: "#",
+                label: 'Sheninth Jr',
+                href: '#',
                 icon: (
                   <img
                     className="h-7 w-7 flex-shrink-0 rounded-full"
@@ -110,4 +110,3 @@ export const LogoIcon = () => {
     </Link>
   );
 };
-

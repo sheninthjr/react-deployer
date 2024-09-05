@@ -1,7 +1,5 @@
-import { SideBar } from "@/components/SideBar";
+import { SideBar } from '@/components/SideBar';
 
 export default function Home() {
-  return (
-  <SideBar/>
-  );
+  return <SideBar />;
 }

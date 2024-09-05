@@ -1,8 +1,8 @@
 // Input component extends from shadcnui - https://ui.shadcn.com/docs/components/input
-"use client";
-import * as React from "react";
-import { cn } from "@/lib/utils";
-import { useMotionTemplate, useMotionValue, motion } from "framer-motion";
+'use client';
+import * as React from 'react';
+import { cn } from '@/lib/utils';
+import { useMotionTemplate, useMotionValue, motion } from 'framer-motion';
 
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {}
@@ -26,7 +26,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         style={{
           background: useMotionTemplate`
         radial-gradient(
-          ${visible ? radius + "px" : "0px"} circle at ${mouseX}px ${mouseY}px,
+          ${visible ? radius + 'px' : '0px'} circle at ${mouseX}px ${mouseY}px,
           var(--blue-500),
           transparent 80%
         )
@@ -47,15 +47,15 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
            dark:shadow-[0px_0px_1px_1px_var(--neutral-700)]
            group-hover/input:shadow-none transition duration-400
            `,
-            className
+            className,
           )}
           ref={ref}
           {...props}
         />
       </motion.div>
     );
-  }
+  },
 );
-Input.displayName = "Input";
+Input.displayName = 'Input';
 
 export { Input };
